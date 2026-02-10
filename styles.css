@@ -1,4 +1,4 @@
-﻿:root {
+:root {
   --bg: #06080c;
   --text: #f4f5f7;
   --muted: #c4cad3;
@@ -205,6 +205,21 @@ body {
   margin-top: 2rem;
 }
 
+.hero-lanes {
+  margin-top: 1rem;
+  display: grid;
+  gap: 0.45rem;
+  max-width: 760px;
+}
+
+.lane-title {
+  margin: 0.4rem 0 0;
+  color: rgba(244, 245, 247, 0.78);
+  font-size: 0.8rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
 .social-btn {
   color: var(--text);
   text-decoration: none;
@@ -282,6 +297,10 @@ body {
   backdrop-filter: blur(2px);
 }
 
+.info-card-wide {
+  grid-column: 1 / -1;
+}
+
 .info-card h2 {
   margin: 0;
   font-size: 1.2rem;
@@ -325,6 +344,90 @@ body {
   display: grid;
   gap: 0.55rem;
   color: rgba(244, 245, 247, 0.86);
+}
+
+.modes-grid,
+.games-grid {
+  margin-top: 0.9rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.marquee {
+  margin-top: 0.9rem;
+  display: flex;
+  overflow: hidden;
+  gap: 0.6rem;
+  mask-image: linear-gradient(to right, transparent, #000 7%, #000 93%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 7%, #000 93%, transparent);
+}
+
+.marquee-track {
+  flex-shrink: 0;
+  min-width: max-content;
+  display: flex;
+  gap: 0.6rem;
+  animation: marquee-left 18s linear infinite;
+}
+
+.marquee-games .marquee-track {
+  animation-duration: 24s;
+}
+
+.marquee-reverse .marquee-track {
+  animation-name: marquee-right;
+}
+
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+.mode-chip,
+.game-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+  padding: 0.48rem 0.85rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.marquee-compact .mode-chip,
+.marquee-compact .game-chip {
+  padding: 0.32rem 0.7rem;
+  font-size: 0.72rem;
+}
+
+.mode-chip {
+  color: #d8ffe7;
+  border-color: rgba(111, 255, 172, 0.35);
+  background: rgba(111, 255, 172, 0.09);
+}
+
+.game-chip {
+  color: rgba(244, 245, 247, 0.94);
+}
+
+@keyframes marquee-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-100% - 0.6rem));
+  }
+}
+
+@keyframes marquee-right {
+  0% {
+    transform: translateX(calc(-100% - 0.6rem));
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
 
 @media (max-width: 780px) {
@@ -377,5 +480,27 @@ body {
 
   .stats-grid {
     grid-template-columns: 1fr;
+  }
+
+  .mode-chip,
+  .game-chip {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .hero-lanes {
+    margin-top: 0.8rem;
+  }
+
+  .lane-title {
+    font-size: 0.72rem;
+  }
+
+  .marquee-track {
+    animation-duration: 22s;
+  }
+
+  .marquee-games .marquee-track {
+    animation-duration: 28s;
   }
 }
