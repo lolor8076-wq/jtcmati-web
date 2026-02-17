@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JTCMATI - Inicio</title>
+  <meta name="description" content="Landing oscura estilo cinematico para JTCMATI">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Barra de progreso de scroll -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+  
+  <!-- Cursor personalizado -->
+  <div class="custom-cursor" id="customCursor"></div>
+  <div class="cursor-trail" id="cursorTrail"></div>
+
+  <!-- Modal de bienvenida -->
+  <div class="welcome-modal" id="welcomeModal">
+    <div class="welcome-content">
+      <div class="welcome-icon">🎮</div>
+      <h2 class="gradient-text">¡Bienvenido a JTCMATI!</h2>
+      <p>La mejor comunidad de Haxball y gaming</p>
+      <button class="welcome-btn" id="closeWelcome" data-testid="close-welcome-btn">Entrar</button>
+    </div>
+  </div>
+
+  <!-- Modal de Tienda -->
+  <div class="store-modal" id="storeModal">
+    <div class="store-modal-content">
+      <button class="store-close" id="closeStore" data-testid="close-store-btn">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      <div class="store-image-container" id="storeImageContainer">
+        <img src="tienda-vip.png" alt="Tienda VIP JTCM - Catálogo de Productos" data-testid="store-image">
+      </div>
+    </div>
+  </div>
+  <!-- Modal de Reglas -->
+  <div class="store-modal" id="rulesModal">
+    <div class="store-modal-content">
+      <button class="store-close" id="closeRules" data-testid="close-rules-btn">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      <div class="store-image-container">
+        <img src="reglas-jtcm.png.png" alt="Reglas oficiales del servidor JTCM" data-testid="rules-image">
+      </div>
+    </div>
+  </div>
+  <canvas id="particlesCanvas"></canvas>
+
+  <main class="hero" id="hero">
+    <div class="noise"></div>
+    
+    <div class="top-strip">
+      <div class="dot-cluster">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </div>
+      
+      <div class="right-controls">
+        <div class="lang-switch">
+          <button class="lang-btn is-active" data-lang="es" data-testid="lang-btn-es">ES</button>
+          <button class="lang-btn" data-lang="en" data-testid="lang-btn-en">EN</button>
+        </div>
+        <a href="#" id="discordTopLink" class="discord-link" target="_blank" rel="noopener" data-i18n="siteOfficial" data-testid="discord-top-link">
+          :: SITIO OFICIAL
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-content" data-aos="fade-up">
+      <div class="brand-row">
+        <img src="https://customer-assets.emergentagent.com/job_eb3beb5a-ba68-40d7-93c0-04171cca5921/artifacts/furdxqmq_logo-jtcm.png.png" alt="JTCMATI Logo" class="brand-logo" data-testid="brand-logo">
+        <h1 class="gradient-text-animated" data-testid="hero-title">JTCMATI</h1>
+      </div>
+      
+      <p data-i18n="heroSubtitle" data-testid="hero-subtitle">Comunidad, musica y contenido en un solo lugar.</p>
+      
+      <div class="attention-row">
+        <span class="attention-pill" data-testid="attention-pill-host">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor" style="margin-right: 6px;">
+            <circle cx="6" cy="6" r="6"/>
+          </svg>
+          <span data-i18n="host247">HOST 24/7 ONLINE</span>
+        </span>
+        <span class="attention-pill" data-i18n="officialStore" data-testid="attention-pill-store">TIENDA OFICIAL</span>
+        <span class="attention-pill online-counter" data-testid="online-counter">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor" style="margin-right: 6px;">
+            <circle cx="6" cy="6" r="6"/>
+          </svg>
+          <span id="onlineCount">13</span> / Online
+        </span>
+      </div>
+
+      <div class="social-buttons">
+        <a href="#" id="discordBtn" class="social-btn shine-effect" target="_blank" rel="noopener" data-testid="discord-btn">Discord</a>
+        <a href="#" id="hostBtn" class="social-btn social-btn-host shine-effect" target="_blank" rel="noopener" data-i18n="joinHostButton" data-testid="host-btn">Entrar al Host</a>
+        <button class="social-btn shine-effect" id="storeBtn" data-testid="store-btn">Tienda</button>
+        <button class="social-btn shine-effect" id="rulesBtn" data-testid="rules-btn">Reglas</button>
+        <a href="#" id="instagramBtn" class="social-btn shine-effect" target="_blank" rel="noopener" data-testid="instagram-btn">Instagram</a>
+        <a href="#" id="tiktokBtn" class="social-btn shine-effect" target="_blank" rel="noopener" data-testid="tiktok-btn">TikTok</a>
+      </div>
+
+      <div class="hero-lanes">
+        <p class="lane-title" data-i18n="modesTitle" data-testid="modes-title">MODALIDADES DE SALA</p>
+        <div class="marquee marquee-modes marquee-compact">
+          <div class="marquee-track">
+            <span class="mode-chip">REAL SOCCER</span>
+            <span class="mode-chip">FUTSAL</span>
+            <span class="mode-chip">MODO 4V4</span>
+            <span class="mode-chip">VOLLEY 2V2</span>
+            <span class="mode-chip">ICEBALL</span>
+          </div>
+          <div class="marquee-track" aria-hidden="true">
+            <span class="mode-chip">REAL SOCCER</span>
+            <span class="mode-chip">FUTSAL</span>
+            <span class="mode-chip">MODO 4V4</span>
+            <span class="mode-chip">VOLLEY 2V2</span>
+            <span class="mode-chip">ICEBALL</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-lanes">
+        <p class="lane-title" data-i18n="gamesTitle" data-testid="games-title">JUEGOS DESTACADOS EN DISCORD</p>
+        <div class="marquee marquee-games marquee-reverse marquee-compact">
+          <div class="marquee-track">
+            <span class="game-chip">HAXBALL</span>
+            <span class="game-chip">CLASH ROYALE</span>
+            <span class="game-chip">AMONG US</span>
+            <span class="game-chip">MINECRAFT</span>
+            <span class="game-chip">COUNTER STRIKE</span>
+            <span class="game-chip">ROBLOX</span>
+            <span class="game-chip">GTA SAN ANDREAS</span>
+            <span class="game-chip">TRUCO</span>
+          </div>
+          <div class="marquee-track" aria-hidden="true">
+            <span class="game-chip">HAXBALL</span>
+            <span class="game-chip">CLASH ROYALE</span>
+            <span class="game-chip">AMONG US</span>
+            <span class="game-chip">MINECRAFT</span>
+            <span class="game-chip">COUNTER STRIKE</span>
+            <span class="game-chip">ROBLOX</span>
+            <span class="game-chip">GTA SAN ANDREAS</span>
+            <span class="game-chip">TRUCO</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="social-buttons" style="margin-top: 1.5rem;">
+        <button class="social-btn social-btn-copy shine-effect" id="copyIpBtn" data-i18n="copyIpButton" data-testid="copy-ip-btn">IP Minecraft</button>
+        <span class="ip-version" data-testid="ip-version">VERSION 1.20.1</span>
+      </div>
+    </div>
+
+    <div class="hero-meta">
+      <div class="meta-left" data-i18n="founder" data-testid="meta-founder">Fundador: Mati</div>
+      <div class="meta-right" data-i18n="foundation" data-testid="meta-foundation">Fundacion: 17/10/24</div>
+    </div>
+  </main>
+
+  <section class="info-sections" id="infoSections">
+    <article class="info-card card-3d" data-aos="fade-up" data-aos-delay="100">
+      <h2 data-i18n="communityTitle" data-testid="community-title">Comunidad</h2>
+      <p class="info-subtitle" data-i18n="communitySubtitle" data-testid="community-subtitle">Numeros de nuestra comunidad</p>
+      <div class="stats-grid">
+        <div class="stat-card card-3d" data-testid="stat-discord">
+          <span id="statDiscord" class="stat-value counter">0</span>
+          <span class="stat-label">Discord</span>
+        </div>
+        <div class="stat-card card-3d" data-testid="stat-instagram">
+          <span id="statInstagram" class="stat-value counter">0</span>
+          <span class="stat-label">Instagram</span>
+        </div>
+        <div class="stat-card card-3d" data-testid="stat-tiktok">
+          <span id="statTiktok" class="stat-value counter">0</span>
+          <span class="stat-label">TikTok</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="info-card card-3d" data-aos="fade-up" data-aos-delay="200">
+      <h2 data-i18n="rulesTitle" data-testid="rules-title">Reglas Rapidas</h2>
+      <p class="info-subtitle" data-i18n="rulesSubtitle" data-testid="rules-subtitle">Resumen para nuevos jugadores</p>
+      <ul class="rules-list" data-testid="rules-list">
+        <li data-i18n="rule1" data-aos="fade-left" data-aos-delay="300">Respeta a todos en chat y voz.</li>
+        <li data-i18n="rule2" data-aos="fade-left" data-aos-delay="350">No uses hacks, macros ni exploits.</li>
+        <li data-i18n="rule3" data-aos="fade-left" data-aos-delay="400">No grief, no spam y no toxicidad.</li>
+        <li data-i18n="rule4" data-aos="fade-left" data-aos-delay="450">Sigue las indicaciones del staff.</li>
+        <li data-i18n="rule5" data-aos="fade-left" data-aos-delay="500">Diviertete y juega limpio.</li>
+      </ul>
+    </article>
+
+    <article class="info-card card-3d" data-aos="fade-up" data-aos-delay="250">
+      <h2 data-i18n="serverInfoTitle" data-testid="server-info-title">Informacion del Servidor</h2>
+      <p class="info-subtitle" data-i18n="serverInfoSubtitle" data-testid="server-info-subtitle">Todo lo que incluye la experiencia JTCM</p>
+      <ul class="features-list" data-testid="server-features-list">
+        <li data-i18n="featureElitePass">Pase Elite</li>
+        <li data-i18n="featureExclusiveRoles">Roles Exclusivos</li>
+        <li data-i18n="featureStore">Tienda</li>
+        <li data-i18n="featureEconomy">Sistema de Economia</li>
+        <li data-i18n="featureStatsRanks">Estadisticas y Rangos</li>
+        <li data-i18n="featureCommands">Comandos unicos</li>
+        <li data-i18n="featureHostModes">Host con modalidades</li>
+      </ul>
+    </article>
+
+    <article class="info-card info-card-wide card-3d" data-aos="fade-up" data-aos-delay="300">
+      <h2 data-i18n="modesTitle" data-testid="modes-title-section">Modalidades de Sala</h2>
+      <p class="info-subtitle" data-i18n="modesSubtitle" data-testid="modes-subtitle">Entrena y compite en distintos formatos</p>
+      <div class="marquee marquee-modes">
+        <div class="marquee-track">
+          <span class="mode-chip">Real Soccer</span>
+          <span class="mode-chip">Futsal</span>
+          <span class="mode-chip">Modo 4v4</span>
+          <span class="mode-chip">Volley 2v2</span>
+          <span class="mode-chip">IceBall</span>
+        </div>
+        <div class="marquee-track" aria-hidden="true">
+          <span class="mode-chip">Real Soccer</span>
+          <span class="mode-chip">Futsal</span>
+          <span class="mode-chip">Modo 4v4</span>
+          <span class="mode-chip">Volley 2v2</span>
+          <span class="mode-chip">IceBall</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="info-card info-card-wide card-3d" data-aos="fade-up" data-aos-delay="400">
+      <h2 data-i18n="gamesTitle" data-testid="games-title-section">Juegos Destacados en Discord</h2>
+      <p class="info-subtitle" data-i18n="gamesSubtitle" data-testid="games-subtitle">Nuestros juegos mas activos y populares</p>
+      <div class="marquee marquee-games marquee-reverse">
+        <div class="marquee-track">
+          <span class="game-chip">HAXBALL</span>
+          <span class="game-chip">CLASHROYALE</span>
+          <span class="game-chip">AMONG US</span>
+          <span class="game-chip">MINECRAFT</span>
+          <span class="game-chip">COUNTER STRIKE</span>
+          <span class="game-chip">ROBLOX</span>
+          <span class="game-chip">GTA SAN ANDREAS ONLINE</span>
+          <span class="game-chip">TRUCO</span>
+        </div>
+        <div class="marquee-track" aria-hidden="true">
+          <span class="game-chip">HAXBALL</span>
+          <span class="game-chip">CLASHROYALE</span>
+          <span class="game-chip">AMONG US</span>
+          <span class="game-chip">MINECRAFT</span>
+          <span class="game-chip">COUNTER STRIKE</span>
+          <span class="game-chip">ROBLOX</span>
+          <span class="game-chip">GTA SAN ANDREAS ONLINE</span>
+          <span class="game-chip">TRUCO</span>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer" data-testid="footer">
+    <p>© 2024 JTCMATI - Todos los derechos reservados</p>
+    <p class="easter-egg-hint">💡 Pista: Prueba el código clásico de videojuegos...</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
